@@ -1,9 +1,10 @@
-<form action = "/board" method = "POST">
-	Welcome to tic tac toe
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html>
 <body>
-
+<div>
+<br>
+<p>Welcome to Tic Tac Toe!!!<p>
 <table border=".5" style="width:30%">
   <tr>
     <td>1</td>
@@ -18,18 +19,18 @@
   <tr>
     <td>7</td>
     <td>8</td>		
-    <td>9</td>
+    <td>9</td>  
   </tr>
 </table>
 
+<p>Player 1, Please choose X or O</p>
+
+<form action="/board" method="Post">
+  <input class="box" type="text" name="marker">
+  <type="submit" name="submit" value="submit">
+</form>
+<p><%=p1%><%=p2%><%=error%></p> 
+
+</div>
 </body>
 </html>
-
-Player 1, Please choose X or O
-<input type="text" name="choice">
-
-
-
-
-
-</form>
