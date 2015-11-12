@@ -5,7 +5,7 @@ require_relative"web_function_tic_tac_toe.rb"
 game = TicTacToe.new()
 
 get '/board' do 
-	erb :board
+	erb :board, :locals => { :board => game.board}
 end
 
 post '/board' do

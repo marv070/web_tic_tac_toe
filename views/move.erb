@@ -1,32 +1,36 @@
-<form action = "/move" method = "POST">
-player 1 is: <%=p1%> <br>
-player 2 is: <%=p2%><br>
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+<div>
+<br>
+<img src="/mm.png">
+player 1 is: <%=player1%> <br>
+player 2 is: <%=player2%><br>
 <table border=".5" style="width:30%">
   <tr>
     <td><%=board[0]%></td>
-    <td><%=board[1]%></td>		
+    <td><%=board[1]%></td>    
     <td><%=board[2]%></td>
   </tr>
   <tr>
     <td><%=board[3]%></td>
-    <td><%=board[4]%></td>		
+    <td><%=board[4]%></td>    
     <td><%=board[5]%></td>
   </tr>
   <tr>
     <td><%=board[6]%></td>
-    <td><%=board[7]%></td>		
+    <td><%=board[7]%></td>    
     <td><%=board[8]%></td>
   </tr>
 </table>
 
+</body>
+</html>
 <br>
 
 Player1, please choose a square. <br> <input type="text" name="choice">
 <p><input type="submit" value="Submit Move" name="submit" /></p>
-
-</form>
- 
-
-</div>
-</body>
-</html>

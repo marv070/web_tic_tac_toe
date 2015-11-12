@@ -1,35 +1,39 @@
 
-<!DOCTYPE html> 
-<html>
-<body>
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body bgcolor="#87CEEB">
+
 <div>
 <br>
-<p>Welcome to Tic Tac Toe!!!<p>
-<table border=".5" style="width:30%">
-  <tr>
-    <td>1</td>
-    <td>2</td>		
-    <td>3</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>5</td>		
-    <td>6</td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>8</td>		
-    <td>9</td>  
-  </tr>
+<img src="/mm.png">
+
+<p style="color:navy"><b>Let's play Tic Tac Toe!</b></p>
+
+<table> 
+ <tr>
+  <td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
+ </tr><tr>
+  <td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
+ </tr><tr>
+  <td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
+ </tr>
 </table>
 
-<p>Player 1, Please choose X or O</p>
+<p style="color:navy"><b>Player 1, Please choose X or O</b></p>
 
-<form action="/board" method="Post">
-  <input class="box" type="text" name="marker">
-  <type="submit" name="submit" value="submit">
-</form>
-<p><%=p1%><%=p2%><%=error%></p> 
+ <form>
+  <input type="radio" name="choice" value="X" checked>X
+  <br>
+  <input type="radio" name="choice" value="O">O
+  <br>
+  <input type="submit" name="submit" />
+</form> 
+
+
 
 </div>
 </body>
