@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <head>
 <link rel="stylesheet" href="/style.css">
@@ -26,11 +26,43 @@ player 2 is: <%=player2%><br>
     <td><%=board[7]%></td>    
     <td><%=board[8]%></td>
   </tr>
-</table>
+</table> -->
+<!DOCTYPE html>
 
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body bgcolor="#87CEEB">
+
+<div>
+<br>
+<img src="/mm.png">
+
+<p style="color:navy"><b>Let's play Tic Tac Toe!</b></p>
+
+<table> 
+ <tr>
+  <td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
+ </tr><tr>
+  <td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
+ </tr><tr>
+  <td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
+ </tr>
+</table>
 </body>
 </html>
 <br>
-
+<form action = "/move" method = "POST">
 Player1, please choose a square. <br> <input type="text" name="choice">
 <p><input type="submit" value="Submit Move" name="submit" /></p>
+<form>
+
+
+
+
+
+
+
+
+

@@ -5,20 +5,19 @@ require_relative"web_function_tic_tac_toe.rb"
 game = TicTacToe.new()
 
 get '/board' do 
-	erb :board, :locals => { :board => game.board}
+	erb :board, :locals => {:player1 => "", :player2 => "", :board => game.board}
 end
 
 post '/board' do
-	game.p1 = params[:choice].upcase
-	game.p2 = player2_marker(game.p1)
+	# game.p1 = params[:choice].upcase
+	# game.p2 = player2_marker(game.p1)
 	
-erb :move ,:locals => {:player1 => game.p1, :player2 => game.p2, :board => game.board}
+erb :move, :locals => {:player1 => game.p1, :player2 => game.p2, :board => game.board}
 
 end
 
-# get '/make_move' do
-
-# erb :move 
+# post '/move' do
+# erb :move
 
 # end
 
