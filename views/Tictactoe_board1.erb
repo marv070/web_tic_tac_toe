@@ -1,17 +1,25 @@
 
 <!DOCTYPE html>
-
+																					
 <head>
 <link rel="stylesheet" href="/style.css">
 </head>
-
-<body bgcolor="#87CEEB">
-
+<style>
+p.serif {
+    font-family:"Comic Sans MS", cursive, sans-serif
+}
+p.sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+<body bgcolor="#C0C0C0"><!-- #87CEEB -->
 <div>
 <br>
 <img src="/mm.png">
 
-<p style="color:navy"><b>Let's play Tic Tac Toe!</b></p>
+<p class="serif" "color:red"><b><%=message%></b></p>
+<p style="color:red"><b><%=message3%></b></p>
+
 
 <table> 
  <tr>
@@ -23,18 +31,18 @@
  </tr>
 </table>
 
-<p style="color:navy"><b>Player 1, Please choose X or O</b></p>
 
- <form action="/board" method="POST">
-  <input type="radio" name="choice" value="X" checked>X
+ 
+
+ 
+<p style="color:red"><b><%=message2%></b></p>
+<form action="/tictactoe" method="POST"> 
+  <input type="radio" name="selection" value="X" checked>X
   <br>
-  <input type="radio" name="choice" value="O">O
+  <input type="radio" name="selection" value="O">O
   <br>
   <input type="submit" name="submit" />
 </form> 
 
 
 
-</div>
-</body>
-</html>
