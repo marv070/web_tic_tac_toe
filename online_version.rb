@@ -11,8 +11,8 @@ get '/tictactoe' do
 									   :message => "Let's play some tic tac toe!", 
 									   :message2 => "Please Pick X or O ?", 
 									   :message3 => "", 
-									   :message4 => ""}
-
+									   :message4 => "",
+									   :mindchanger => ""}
 end
 
 
@@ -20,13 +20,13 @@ post '/tictactoe' do
   game.player1 = params[:selection].upcase
   player_marker = game.current_player()
 	
-	if game.marker_valid?(game.player1) == true
+	 #if game.marker_valid?(game.player1) == true
 		game.player2 = game.p2(game.player1)
 		erb :Tictactoe_board2, :locals => {:current => game.current, 
 										   :message => "Player 1 is #{game.player1} and Player 2 is #{game.player2}.",
 										   :message5 => "Pick a Square Player #{player_marker} ", 
 										   :board => game.board}
-	end
+	# end
 end
 
 post '/board' do
@@ -45,16 +45,19 @@ post '/board' do
 			
 			elsif game.win(game.board) == true
 				erb :gamewon, :locals => {:message => "Player #{player_marker} has won.", 
+										  :message6 => "Would you like to play again?",
 										  :board => game.board }
 			
 			else game.is_board_full?(game.board) == true
 			erb :gamewon, :locals => {:message => "Players have tied.", 
+				                      :message6 => "Would you like to play again?",
 				                      :board => game.board }
 			end
 				
 	else
 		erb :Tictactoe_board2, :locals => { :current => game.current, 
 			                                :message => "Square taken, Please choose again.", 
+			                                :message5 => "",
 			                                :board => game.board }
 	end
  end
@@ -67,10 +70,11 @@ post '/replay' do
 			
 		else
 			erb :Tictactoe_board1, :locals => {:board => game.board,
-											   :message => "Lets play again", 
-											   :message2 => "!!!Pick X or O!!!", 
-											   :message3 => "You must PLAY AGAIN OR ELSE"}
-	
+											   :message => "Thanks for playing", 
+											   :message2 => "", 
+											   :message3 => "See You Next Time",
+	 										   :message4 => " ",
+		 									   :mindchanger => "If you change your mind then Please pick X or O"}
 		end
 
  end
