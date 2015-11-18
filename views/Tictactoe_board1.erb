@@ -29,11 +29,15 @@ p.sansserif {
   <td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
  </tr>
 </table>
-
-
  
 
- 
+<form action="/tictactoe" method="POST"> 
+  <input type="radio" name="gamemode" value="Human" checked>Human vs Human 
+  <br>
+ <form action="/tictactoe" method="POST">  
+  <input type="radio" name="gamemode" value="Computer">Human vs Computer
+</form> 
+
 <p style="color:red"><b><%=message2%></b></p><br>
 <p style="text-align:center"><%=mindchanger%> </p>
 
