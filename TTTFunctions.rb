@@ -1,12 +1,11 @@
 class TTTgame
-   attr_accessor :board, :player1, :player2, :current, :type
-  
-  def initialize(board, player1, player2, current, gametype)
+   attr_accessor :board, :player1, :player2, :current, :mode
+  def initialize(board, player1, player2, current, mode)
     @board = board_position_array
-    @player1 = ""
-    @player2 = ""
-    @current = 1
-    @type = ""
+    @player1 = player1
+    @player2 = player2
+    @current = current
+    @mode = mode
   end
 
   def board_position_array
@@ -15,7 +14,7 @@ class TTTgame
 
   def random_select(board)
     array = rand(1..9)
-    if square_valid?(n,board) == false
+    if square_valid?(array,board) == false
       random_select(board)
     else
       player_marker = current_player()

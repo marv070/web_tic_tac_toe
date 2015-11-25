@@ -1,6 +1,6 @@
 require 'sinatra'
 require_relative "TTTFunctions.rb"
-
+require 'tilt/erb'
 #variable initializing a new instance of class TTTgame
 #passing in board, player1, player2, and current_player. Player1 is by default.
 game = TTTgame.new(@board, "", "",1,"")
@@ -19,7 +19,8 @@ end
 post '/tictactoe' do
   game.player1 = params[:selection].upcase
   player_marker = game.current_player()
-  game.player2 = game.p2(game.player1)
+  game.player2 = game.p2(game.player1)   
+  game.mode = params[:gamemode]
     erb :Tictactoe_board2, :locals => {:current => game.current, 
 									   :message => "Player 1 is #{game.player1} and Player 2 is #{game.player2}.",
 									   :message5 => "Pick a Square Player #{player_marker} ", 
@@ -28,10 +29,10 @@ post '/tictactoe' do
 end
 
 post '/board' do
-	game.type = params[:gamemode]
+    
     choice = params[:choice].to_i
 	player_marker = game.current_player()
-	
+	game.mode = params[:gamemode]
 		
 		if game.square_valid?(choice, game.board) == true
 	      game.board[choice - 1] = player_marker
@@ -39,12 +40,13 @@ post '/board' do
 			if game.is_board_full?(game.board) == false && game.win(game.board) == false
 				  game.current = game.switch_players()
 				  
-			    if game.type == "gjh"
-			     	game.random_select(game.board)
+			    if game.mode == "Computer" 
+			     	game.random_select(game.board) 
 			     	if game.is_board_full?(game.board) == false && game.win(game.board) == false
 				      game.current = game.switch_players()
 				      erb :Tictactoe_board2, :locals => { :current => game.current, 
 			                                              :message => "", 
+			 								              :message5 => "",
 			 								              :board => game.board}
 			        
 			        elsif game.win(game.board) == true
