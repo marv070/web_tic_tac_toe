@@ -24,35 +24,38 @@ post '/tictactoe' do
     erb :Tictactoe_board2, :locals => {:current => game.current, 
 									   :message => "Player 1 is #{game.player1} and Player 2 is #{game.player2}.",
 									   :message5 => "Pick a Square Player #{player_marker} ", 
+									   :message2 => " The type of game you are playing is #{game.mode}",
 									   :board => game.board}
   
 end
+
 
 post '/board' do
     
     choice = params[:choice].to_i
 	player_marker = game.current_player()
-	game.mode = params[:gamemode]
-		
+	#game.mode = params['gamemode']
+
 		if game.square_valid?(choice, game.board) == true
 	      game.board[choice - 1] = player_marker
 			
 			if game.is_board_full?(game.board) == false && game.win(game.board) == false
 				  game.current = game.switch_players()
 				  
-			    if game.mode == "Computer" 
+			    if game.mode == "Computer"
 			     	game.random_select(game.board) 
 			     	if game.is_board_full?(game.board) == false && game.win(game.board) == false
 				      game.current = game.switch_players()
+				      
 				      erb :Tictactoe_board2, :locals => { :current => game.current, 
 			                                              :message => "", 
 			 								              :message5 => "",
+			 								              :message2 => game.mode,
 			 								              :board => game.board}
 			        
 			        elsif game.win(game.board) == true
-				       erb :gamewon, :locals => {:message => "Player #{player_marker} has won.", 
-										         :message6 => "Would you like to play again?",
-										         :board => game.board }
+				      redirect to('/gameover')
+				       
 			
 			        else game.is_board_full?(game.board) == true
 			          erb :gamewon, :locals => {:message => "Players have tied.", 
@@ -65,6 +68,7 @@ post '/board' do
 		  erb :Tictactoe_board2, :locals => { :current => game.current, 
 			                                :message => "", 
 			 								:message5 => "",
+			 								:message2 => game.mode,
 			 								:board => game.board }
 	   
 	    elsif game.win(game.board) == true
@@ -82,6 +86,7 @@ post '/board' do
 	    	erb :Tictactoe_board2, :locals => { :current => game.current, 
 			                                    :message => "Square taken, Please pick again.", 
 			 								    :message5 => "",
+			 								    :message2 => game.mode,
 			 								    :board => game.board }                           
     
     end
@@ -137,3 +142,11 @@ post '/replay' do
 		end
 
  end
+
+get '/gameover' do
+
+erb :gamewon, :locals => {:message => "Player #{game.current_player()} has won.", 
+										         :message6 => "Would you like to play again?",
+										         :board => game.board }
+
+end
